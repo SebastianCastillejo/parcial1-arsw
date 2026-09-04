@@ -13,10 +13,32 @@ import java.util.Arrays;
  */
 public class Main {
 
-    public static void main(String a[]) {
-        System.out.println(bytesToHex(PiDigits.getDigits(0, 10)));
-        System.out.println(bytesToHex(PiDigits.getDigits(1, 100)));
-        System.out.println(bytesToHex(PiDigits.getDigits(1, 1000000)));
+    public static void main(String a[]) throws InterruptedException {
+
+        Hilo H1 = new Hilo(0, 10);
+        Hilo H2 = new Hilo(1, 100);
+        //Hilo H3 = new Hilo(1, 1000000);
+
+        H1.start();
+        H2.start();
+        //H3.start();
+
+        H1.join();
+        H2.join();
+        //H3.join();
+
+
+
+        System.out.println(bytesToHex(H1.getResultado()));
+        System.out.println(bytesToHex(H2.getResultado()));
+        //System.out.println(bytesToHex(H3.getResultado()));
+
+        /**
+         *
+         * System.out.println(bytesToHex(PiDigits.getDigits(0, 10)));
+         * System.out.println(bytesToHex(PiDigits.getDigits(1, 100)));
+         * System.out.println(bytesToHex(PiDigits.getDigits(1, 1000000)));
+         * **/
     }
 
     private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
